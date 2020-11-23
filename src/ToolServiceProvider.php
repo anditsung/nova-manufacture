@@ -44,7 +44,7 @@ class ToolServiceProvider extends ServiceProvider
     public function registerPolicies()
     {
         Gate::before( function ($user) {
-            if ($user->administrator) {
+            if ($user->administrator()) {
                 return true;
             }
         });
