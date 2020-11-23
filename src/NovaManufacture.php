@@ -16,6 +16,8 @@ class NovaManufacture extends Tool
     {
         Nova::script('nova-manufacture', __DIR__.'/../dist/js/tool.js');
         Nova::style('nova-manufacture', __DIR__.'/../dist/css/tool.css');
+
+        Nova::resources(config('novamanufacture.resources'));
     }
 
     /**

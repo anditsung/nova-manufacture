@@ -2,6 +2,7 @@
 
 namespace Tsung\NovaManufacture;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
@@ -17,6 +18,10 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->registerPublishing();
+        }
+
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'nova-manufacture');
 
         $this->app->booted(function () {
@@ -24,8 +29,32 @@ class ToolServiceProvider extends ServiceProvider
         });
 
         Nova::serving(function (ServingNova $event) {
-            //
+            $this->registerPolicies();
+            Nova::tools($this->registerTools());
         });
+    }
+
+    protected function registerPublishing()
+    {
+        $this->publishes([
+            __DIR__ . '/../config' => config_path('/'),
+        ], 'novamanufacture-config');
+    }
+
+    public function registerPolicies()
+    {
+        Gate::before( function ($user) {
+            if ($user->administrator) {
+                return true;
+            }
+        });
+    }
+
+    protected function registerTools()
+    {
+        return [
+            new NovaManufacture(),
+        ];
     }
 
     /**
@@ -51,6 +80,8 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->commands([
+            //
+        ]);
     }
 }
