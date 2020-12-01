@@ -9,6 +9,6 @@ return [
         \Tsung\NovaManufacture\Nova\Schedule::class,
         \Tsung\NovaManufacture\Nova\Size::class,
         \Tsung\NovaManufacture\Nova\Surface::class,
-
+        \Tsung\NovaManufacture\Nova\Weight::class,
     ]
 ];

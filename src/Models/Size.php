@@ -2,7 +2,9 @@
 
 namespace Tsung\NovaManufacture\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Tsung\NovaUserManagement\Traits\SaveToUpper;
 
 class Size extends Model
@@ -13,7 +15,15 @@ class Size extends Model
 
     protected $fillable = [
         'name',
+        'abbr',
+        'is_active',
+        'user_id'
     ];
+
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function scopeFields($query)
     {
