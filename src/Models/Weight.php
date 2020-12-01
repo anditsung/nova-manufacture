@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace Tsung\NovaManufacture\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Weight extends Model

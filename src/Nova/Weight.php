@@ -11,7 +11,10 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Hidden;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
+use Tsung\NovaUserManagement\Traits\GlobalScopes;
+use Tsung\NovaUserManagement\Traits\ResourceAuthorization;
+use Tsung\NovaUserManagement\Traits\ResourceRedirectIndex;
 
 class Weight extends Resource
 {
@@ -24,7 +27,7 @@ class Weight extends Resource
      *
      * @var string
      */
-    public static $model = \Tsung\NovaManufacture\Models\Surface::class;
+    public static $model = \Tsung\NovaManufacture\Models\Weight::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -56,10 +59,14 @@ class Weight extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('weight')
-                ->rules('required'),
+            Number::make('weight')
+                ->step(0.1)
+                ->rules('required')
+                ->creationRules('unique:manufacture_weights,weight')
+                ->updateRules('unique:manufacture_weights,weight,{{resourceId}}'),
 
-            Boolean::make('Active', 'is_active'),
+            Boolean::make('Active', 'is_active')
+                ->default(true),
 
             Hidden::make('user_id')
                 ->default($request->user()->id),

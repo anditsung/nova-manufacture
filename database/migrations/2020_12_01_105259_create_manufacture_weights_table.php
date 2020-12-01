@@ -16,6 +16,7 @@ class CreateManufactureWeightsTable extends Migration
         Schema::create('manufacture_weights', function (Blueprint $table) {
             $table->id();
             $table->float('weight', 2, 1);
+            $table->boolean('is_active');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
