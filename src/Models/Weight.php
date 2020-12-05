@@ -10,7 +10,7 @@ class Weight extends Model
     protected $table = 'manufacture_weights';
 
     protected $fillable = [
-        'weight',
+        'name',
         'is_active',
         'user_id'
     ];
@@ -22,6 +22,6 @@ class Weight extends Model
 
     public function scopeFields($query)
     {
-        return $query->select('id', 'weight');
+        return $query->select('id', 'name');
     }
 }

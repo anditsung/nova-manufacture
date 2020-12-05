@@ -34,7 +34,7 @@ class Weight extends Resource
      *
      * @var string
      */
-    public static $title = 'weight';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -43,7 +43,7 @@ class Weight extends Resource
      */
     public static $search = [
         'id',
-        'weight',
+        'name',
     ];
 
     public static $group = "Manufacture";
@@ -59,11 +59,11 @@ class Weight extends Resource
     public function fields(Request $request)
     {
         return [
-            Number::make('weight')
+            Number::make('name')
                 ->step(0.1)
                 ->rules('required')
-                ->creationRules('unique:manufacture_weights,weight')
-                ->updateRules('unique:manufacture_weights,weight,{{resourceId}}'),
+                ->creationRules('unique:manufacture_weights,name')
+                ->updateRules('unique:manufacture_weights,name,{{resourceId}}'),
 
             Boolean::make('Active', 'is_active')
                 ->default(true),
