@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Tsung\NovaUserManagement\Traits\GlobalScopes;
 use Tsung\NovaUserManagement\Traits\ResourceAuthorization;
 use Tsung\NovaUserManagement\Traits\ResourceRedirectIndex;
@@ -59,8 +60,7 @@ class Weight extends Resource
     public function fields(Request $request)
     {
         return [
-            Number::make('name')
-                ->step(0.1)
+            Text::make('name')
                 ->rules('required')
                 ->creationRules('unique:manufacture_weights,name')
                 ->updateRules('unique:manufacture_weights,name,{{resourceId}}'),
