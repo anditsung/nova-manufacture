@@ -49,6 +49,8 @@ class Product extends Resource
 
     public static $displayInNavigation = false;
 
+    public static $globallySearchable = false;
+
     /**
      * Get the fields displayed by the resource.
      *
