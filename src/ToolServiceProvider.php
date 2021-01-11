@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
+use Tsung\NovaManufacture\Commands\Install;
 use Tsung\NovaManufacture\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
@@ -81,7 +82,7 @@ class ToolServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
-            //
+            Install::class
         ]);
     }
 }
