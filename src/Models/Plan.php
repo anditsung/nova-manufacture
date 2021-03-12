@@ -14,8 +14,8 @@ class Plan extends Model
     protected $table = "manufacture_plans";
 
     protected $fillable = [
+        'code',
         'name',
-        'abbr',
         'lines',
         'user_id'
     ];

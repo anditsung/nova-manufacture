@@ -14,8 +14,8 @@ class Surface extends Model
     protected $table = 'manufacture_surfaces';
 
     protected $fillable = [
+        'code',
         'name',
-        'abbr',
         'is_active',
         'user_id',
     ];

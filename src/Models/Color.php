@@ -14,8 +14,8 @@ class Color extends Model
     protected $table = "manufacture_colors";
 
     protected $fillable = [
+        'code',
         'name',
-        'abbr',
         'is_active',
         'user_id',
     ];

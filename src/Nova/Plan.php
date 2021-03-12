@@ -39,8 +39,8 @@ class Plan extends Resource
      */
     public static $search = [
         'id',
-        'name',
-        'abbr'
+        'code',
+        'name'
     ];
 
     public static $group = "Manufacture";
@@ -58,30 +58,30 @@ class Plan extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('Name')
+            Text::make(__('Code'))
+                ->rules('required')
+                ->creationRules('unique:manufacture_plans,code')
+                ->updateRules('unique:manufacture_plans,code,{{resourceId}}'),
+
+            Text::make(__('Name'))
                 ->rules('required'),
 
-            Text::make('ABBR')
-                ->rules('required')
-                ->creationRules('unique:manufacture_plans,abbr')
-                ->updateRules('unique:manufacture_plans,abbr,{{resourceId}}'),
-
-            Number::make('Lines')
+            Number::make(__('Lines'))
                 ->rules('required')
                 ->min(1),
 
             Hidden::make('user_id')
                 ->default($request->user()->id),
 
-            DateTime::make('Created At')
+            DateTime::make(__('Created At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            DateTime::make('Updated At')
+            DateTime::make(__('Updated At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            BelongsTo::make('Created By', 'user', User::class)
+            BelongsTo::make(__('Created By'), 'user', User::class)
                 ->onlyOnDetail(),
         ];
     }

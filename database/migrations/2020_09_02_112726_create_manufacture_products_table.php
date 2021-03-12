@@ -15,8 +15,8 @@ class CreateManufactureProductsTable extends Migration
     {
         Schema::create('manufacture_products', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
-            $table->string('abbr')->unique();
             $table->boolean('is_active');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

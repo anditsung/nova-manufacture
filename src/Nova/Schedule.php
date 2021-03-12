@@ -68,41 +68,41 @@ class Schedule extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('Plan')
+            BelongsTo::make(__('Plan'))
                 ->rules('required')
                 ->viewable(false),
 
-            Number::make('Line')
+            Number::make(__('Line'))
                 ->rules('required'),
 
-            DateTime::make('Start')
+            DateTime::make(__('Start'))
                 ->rules('required')
                 ->format('DD/MM/Y, hh:ss A'),
 
-            DateTime::make('Finish')
+            DateTime::make(__('Finish'))
                 ->rules('required')
                 ->format('DD/MM/Y, hh:ss A'),
 
-            BelongsTo::make('Product')
+            BelongsTo::make(__('Product'))
                 ->rules('required')
                 ->viewable(false),
 
-            BelongsTo::make('Type')
+            BelongsTo::make(__('Type'))
                 ->rules('required')
                 ->viewable(false)
                 ->hideFromIndex(),
 
-            BelongsTo::make('Surface')
+            BelongsTo::make(__('Surface'))
                 ->rules('required')
                 ->hideFromIndex()
                 ->viewable(false),
 
-            BelongsTo::make('Color')
+            BelongsTo::make(__('Color'))
                 ->rules('required')
                 ->hideFromIndex()
                 ->viewable(false),
 
-            Multiselect::make('Sizes')
+            Multiselect::make(__('Sizes'))
                 ->options([
                     'XXS',
                     'XS',
@@ -117,15 +117,15 @@ class Schedule extends Resource
             Hidden::make('user_id')
                 ->default($request->user()->id),
 
-            DateTime::make('Created At')
+            DateTime::make(__('Created At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            DateTime::make('Updated At')
+            DateTime::make(__('Updated At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            BelongsTo::make('Created By', 'user', User::class)
+            BelongsTo::make(__('Created By'), 'user', User::class)
                 ->onlyOnDetail(),
         ];
     }

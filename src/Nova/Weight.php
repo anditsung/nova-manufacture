@@ -62,26 +62,26 @@ class Weight extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('name')
+            Text::make(__('Name'))
                 ->rules('required')
                 ->creationRules('unique:manufacture_weights,name')
                 ->updateRules('unique:manufacture_weights,name,{{resourceId}}'),
 
-            Boolean::make('Active', 'is_active')
+            Boolean::make(__('Active'), 'is_active')
                 ->default(true),
 
             Hidden::make('user_id')
                 ->default($request->user()->id),
 
-            DateTime::make('Created At')
+            DateTime::make(__('Created At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            DateTime::make('Updated At')
+            DateTime::make(__('Updated At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            BelongsTo::make('Created By', 'user', User::class)
+            BelongsTo::make(__('Created By'), 'user', User::class)
                 ->onlyOnDetail(),
         ];
     }

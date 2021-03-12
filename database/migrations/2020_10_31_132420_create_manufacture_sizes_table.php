@@ -15,7 +15,10 @@ class CreateManufactureSizesTable extends Migration
     {
         Schema::create('manufacture_sizes', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
+            $table->boolean('is_active');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

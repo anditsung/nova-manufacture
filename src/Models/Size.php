@@ -14,8 +14,8 @@ class Size extends Model
     protected $table = 'manufacture_sizes';
 
     protected $fillable = [
+        'code',
         'name',
-        'abbr',
         'is_active',
         'user_id'
     ];

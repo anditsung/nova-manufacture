@@ -41,8 +41,8 @@ class Surface extends Resource
      */
     public static $search = [
         'id',
+        'code',
         'name',
-        'abbr',
     ];
 
     public static $group = "Manufacture";
@@ -60,28 +60,28 @@ class Surface extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('Name')
+            Text::make(__('Code'))
+                ->rules('required')
+                ->creationRules('unique:manufacture_surfaces,code')
+                ->updateRules('unique:manufacture_surfaces,code,{{resourceId}}'),
+
+            Text::make(__('Name'))
                 ->rules('required'),
 
-            Text::make('ABBR')
-                ->rules('required')
-                ->creationRules('unique:manufacture_surfaces,abbr')
-                ->updateRules('unique:manufacture_surfaces,abbr,{{resourceId}}'),
-
-            Boolean::make('Active', 'is_active'),
+            Boolean::make(__('Active'), 'is_active'),
 
             Hidden::make('user_id')
                 ->default($request->user()->id),
 
-            DateTime::make('Created At')
+            DateTime::make(__('Created At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            DateTime::make('Updated At')
+            DateTime::make(__('Updated At'))
                 ->format('DD MMMM Y, hh:mm:ss A')
                 ->onlyOnDetail(),
 
-            BelongsTo::make('Created By', 'user', User::class)
+            BelongsTo::make(__('Created By'), 'user', User::class)
                 ->onlyOnDetail(),
         ];
     }
