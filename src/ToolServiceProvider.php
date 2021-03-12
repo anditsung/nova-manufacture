@@ -24,6 +24,7 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'nova-manufacture');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->app->booted(function () {
             $this->routes();
