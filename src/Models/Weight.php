@@ -11,6 +11,7 @@ class Weight extends Model
 
     protected $fillable = [
         'name',
+        'code',
         'is_active',
         'user_id'
     ];

@@ -45,6 +45,7 @@ class Weight extends Resource
     public static $search = [
         'id',
         'name',
+        'code',
     ];
 
     public static $group = "Manufacture";
@@ -62,10 +63,12 @@ class Weight extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make(__('Name'))
+            Text::make(__('Code'))
                 ->rules('required')
-                ->creationRules('unique:manufacture_weights,name')
-                ->updateRules('unique:manufacture_weights,name,{{resourceId}}'),
+                ->creationRules('unique:manufacture_weights,code')
+                ->updateRules('unique:manufacture_weights,code,{{resourceId}}'),
+
+            Text::make(__('Name')),
 
             Boolean::make(__('Active'), 'is_active')
                 ->default(true),
