@@ -123,4 +123,9 @@ class Size extends Resource
     {
         return [];
     }
+
+    public static function uriKey()
+    {
+        return 'manufacture-' . parent::uriKey();
+    }
 }
