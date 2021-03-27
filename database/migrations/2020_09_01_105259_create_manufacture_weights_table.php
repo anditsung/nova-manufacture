@@ -18,10 +18,8 @@ class CreateManufactureWeightsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->boolean('is_active');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

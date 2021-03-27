@@ -19,12 +19,12 @@ class CreateManufactureSchedulesTable extends Migration
             $table->integer('line');
             $table->dateTime('start');
             $table->dateTime('finish');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('surface_id');
-            $table->unsignedBigInteger('color_id');
+            $table->foreignId('product_id');
+            $table->foreignId('type_id');
+            $table->foreignId('surface_id');
+            $table->foreignId('color_id');
             $table->string('sizes');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

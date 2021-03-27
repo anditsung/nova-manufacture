@@ -18,7 +18,7 @@ class CreateManufacturePlansTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->integer('lines');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
