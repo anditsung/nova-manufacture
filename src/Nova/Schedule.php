@@ -3,7 +3,7 @@
 namespace Tsung\NovaManufacture\Nova;
 
 use Tsung\NovaManufacture\Nova\Filters\Line as LineFilter;
-use Tsung\NovaManufacture\Nova\Filters\Plan as PlanFilter;
+use Tsung\NovaManufacture\Nova\Filters\Plant as PlantFilter;
 use Tsung\NovaManufacture\Nova\Filters\Product as ProductFilter;
 use App\Nova\Resource;
 use App\Nova\User;
@@ -68,7 +68,7 @@ class Schedule extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make(__('Plan'))
+            BelongsTo::make(__('Plant'))
                 ->rules('required')
                 ->viewable(false),
 
@@ -103,15 +103,7 @@ class Schedule extends Resource
                 ->viewable(false),
 
             Multiselect::make(__('Sizes'))
-                ->options([
-                    'XXS',
-                    'XS',
-                    'S',
-                    'M',
-                    'L',
-                    'XL',
-                    'XXL',
-                ])
+                ->options(config('novamanufacture.sizes'))
                 ->hideFromIndex(),
 
             Hidden::make('user_id')
@@ -150,7 +142,7 @@ class Schedule extends Resource
     public function filters(Request $request)
     {
         return [
-            (new PlanFilter),
+            (new PlantFilter),
             (new LineFilter),
             (new ProductFilter),
         ];

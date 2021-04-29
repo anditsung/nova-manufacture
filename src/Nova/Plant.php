@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\Text;
 use Tsung\NovaUserManagement\Traits\ResourceAuthorization;
 use Tsung\NovaUserManagement\Traits\ResourceRedirectIndex;
 
-class Plan extends Resource
+class Plant extends Resource
 {
     use ResourceAuthorization,
         ResourceRedirectIndex;
@@ -23,7 +23,7 @@ class Plan extends Resource
      *
      * @var string
      */
-    public static $model = \Tsung\NovaManufacture\Models\Plan::class;
+    public static $model = \Tsung\NovaManufacture\Models\Plant::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

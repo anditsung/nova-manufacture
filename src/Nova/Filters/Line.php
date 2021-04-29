@@ -4,7 +4,7 @@ namespace Tsung\NovaManufacture\Nova\Filters;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
-use Tsung\NovaManufacture\Models\Plan as PlanModel;
+use Tsung\NovaManufacture\Models\Plant as PlantModel;
 
 class Line extends Filter
 {
@@ -36,7 +36,7 @@ class Line extends Filter
      */
     public function options(Request $request)
     {
-        $lines = PlanModel::max('lines');
+        $lines = PlantModel::max('lines');
 
         return array_combine( range(1,$lines), range(1,$lines));
     }

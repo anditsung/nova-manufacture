@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Tsung\NovaUserManagement\Traits\SaveToUpper;
 
-class Plan extends Model
+class Plant extends Model
 {
     use SaveToUpper;
 
-    protected $table = "manufacture_plans";
+    protected $table = "manufacture_plants";
 
     protected $fillable = [
         'code',

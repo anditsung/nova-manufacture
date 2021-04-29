@@ -14,7 +14,7 @@ class Schedule extends Model
     protected $table = 'manufacture_schedules';
 
     protected $fillable = [
-        'plan_id',
+        'plant_id',
         'line',
         'start',
         'finish',
@@ -30,9 +30,9 @@ class Schedule extends Model
         'finish' => 'datetime',
     ];
 
-    public function plan() : BelongsTo
+    public function plant() : BelongsTo
     {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(Plant::class);
     }
 
     public function product() : BelongsTo

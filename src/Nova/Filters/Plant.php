@@ -2,11 +2,11 @@
 
 namespace Tsung\NovaManufacture\Nova\Filters;
 
-use Tsung\NovaManufacture\Models\Plan as PlanModel;
+use Tsung\NovaManufacture\Models\Plant as PlantModel;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 
-class Plan extends Filter
+class Plant extends Filter
 {
     /**
      * The filter's component.
@@ -25,7 +25,7 @@ class Plan extends Filter
      */
     public function apply(Request $request, $query, $value)
     {
-        return $query->where('plan_id', $value);
+        return $query->where('plant_id', $value);
     }
 
     /**
@@ -36,6 +36,6 @@ class Plan extends Filter
      */
     public function options(Request $request)
     {
-        return PlanModel::all()->pluck('id', 'name');
+        return PlantModel::all()->pluck('id', 'name');
     }
 }
