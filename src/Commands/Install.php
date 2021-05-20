@@ -49,7 +49,7 @@ class Install extends Command
         $resources = config("novamanufacture.resources");
 
         foreach($resources as $resource) {
-            $modelPermissions = $this->defaultPermissions($resource::label());
+            $modelPermissions = $this->defaultPermissions($resource::uriKey());
             foreach($modelPermissions as $name => $group) {
                 $this->addPermissions($user, $permissionModel, $name, $group, $guard);
             }

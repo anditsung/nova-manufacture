@@ -123,4 +123,9 @@ class ProductType extends Resource
     {
         return [];
     }
+
+    public static function uriKey()
+    {
+        return 'manufacture-' . parent::uriKey();
+    }
 }
