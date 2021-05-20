@@ -10,6 +10,7 @@ return [
         \Tsung\NovaManufacture\Nova\Size::class,
         \Tsung\NovaManufacture\Nova\Surface::class,
         \Tsung\NovaManufacture\Nova\Weight::class,
+        \Tsung\NovaManufacture\Nova\ProductType::class,
     ],
 
     'sizes' => [
