@@ -31,7 +31,6 @@ class ToolServiceProvider extends ServiceProvider
         });
 
         Nova::serving(function (ServingNova $event) {
-            $this->registerPolicies();
             Nova::tools($this->registerTools());
         });
     }
@@ -41,15 +40,6 @@ class ToolServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config' => config_path('/'),
         ], 'novamanufacture-config');
-    }
-
-    public function registerPolicies()
-    {
-        Gate::before( function ($user) {
-            if ($user->administrator()) {
-                return true;
-            }
-        });
     }
 
     protected function registerTools()
